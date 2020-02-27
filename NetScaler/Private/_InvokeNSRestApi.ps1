@@ -49,7 +49,9 @@ function _InvokeNSRestApi {
         [hashtable]$Arguments = @{},
 
         [switch]$Stat = $false,
-
+        
+        [switch]$bulkbindings = $false,
+        
         [ValidateScript({$Method -eq 'GET'})]
         [hashtable]$Filters = @{},
 
@@ -70,6 +72,9 @@ function _InvokeNSRestApi {
 
     if (-not [string]::IsNullOrEmpty($Resource)) {
         $uri += "/$Resource"
+    }
+    if ($bulkbindings){
+        $uri += "?bulkbindings=yes"
     }
     if ($Method -ne 'GET') {
         if (-not [string]::IsNullOrEmpty($Action)) {
