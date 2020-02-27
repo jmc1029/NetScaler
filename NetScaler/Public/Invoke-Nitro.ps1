@@ -72,6 +72,8 @@ function Invoke-Nitro {
         [hashtable]$Arguments = @{},
 
         [switch]$Stat = $false,
+        
+        [switch]$bulkbindings = $false,
 
         [ValidateScript({$Method -eq 'GET'})]
         [hashtable]$Filters = @{},
